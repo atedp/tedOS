@@ -167,6 +167,7 @@ mod test {
         }
     }
 
+
     #[test]
     fn write_byte() {
         let mut writer = construct_writer();

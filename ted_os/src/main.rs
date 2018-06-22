@@ -7,6 +7,7 @@ use core::panic::PanicInfo;
 
 extern crate volatile;
 extern crate spin;
+extern crate uart_16550;
 
 #[cfg(test)]
 extern crate std;
@@ -16,6 +17,9 @@ extern crate array_init;
 
 #[macro_use]
 mod vga_buffer;
+
+#[macro_use]
+mod serial;
 
 #[macro_use]
 extern crate lazy_static;
@@ -33,7 +37,7 @@ pub fn panic(info: &PanicInfo) -> ! {
 pub extern "C" fn _start() -> ! {
 
     println!("Hello World{}", "!");
-    panic!("Some panic message");
+    serial_println!("Hello Host{}", "!");
 
     loop{}
 }
