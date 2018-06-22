@@ -4,6 +4,8 @@
 
 use core::panic::PanicInfo;
 
+extern crate volatile;
+
 #[panic_implementation]
 #[no_mangle]
 pub fn panic(_info: &PanicInfo) -> ! {
