@@ -11,6 +11,9 @@ extern crate spin;
 #[cfg(test)]
 extern crate std;
 
+#[cfg(test)]
+extern crate array_init;
+
 #[macro_use]
 mod vga_buffer;
 
