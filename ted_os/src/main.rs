@@ -8,6 +8,9 @@ use core::panic::PanicInfo;
 extern crate volatile;
 extern crate spin;
 
+#[cfg(test)]
+extern crate std;
+
 #[macro_use]
 mod vga_buffer;
 

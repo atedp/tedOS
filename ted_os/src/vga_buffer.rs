@@ -137,6 +137,14 @@ impl fmt::Write for Writer {
     }
 }
 
+#[cfg(test)]
+mod test {
+    use super::*;
+
+    #[test]
+    fn foo() {}
+}
+
 /*
 pub fn print_something() {
     use core::fmt::Write;
