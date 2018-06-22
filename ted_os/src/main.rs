@@ -1,6 +1,7 @@
-#![feature(panic_implementation)]
+#![cfg_attr(test, allow(dead_code, unused_macros, unused_imports))]
 #![no_std]
-#![no_main]
+#![feature(panic_implementation)]
+#![cfg_attr(not(test), no_main)]
 
 use core::panic::PanicInfo;
 
@@ -13,6 +14,7 @@ mod vga_buffer;
 #[macro_use]
 extern crate lazy_static;
 
+#[cfg(not(test))]   //only compiles when the test flag is not set
 #[panic_implementation]
 #[no_mangle]
 pub fn panic(info: &PanicInfo) -> ! {
@@ -20,8 +22,7 @@ pub fn panic(info: &PanicInfo) -> ! {
     loop{}
 }
 
-//static HELLO: &[u8] = b"Hello World!";
-
+#[cfg(not(test))]
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
 
