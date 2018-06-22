@@ -10,6 +10,8 @@ pub fn panic(_info: &PanicInfo) -> ! {
     loop{}
 }
 
+mod vga_buffer;
+
 static HELLO: &[u8] = b"Hello World!";
 
 #[no_mangle]
@@ -22,7 +24,9 @@ pub extern "C" fn _start() -> ! {
            *vga_buffer.offset(i as isize * 2 + 1) = 0xb;
        }
    }
-   
+
+vga_buffer::print_something();
+
     loop{}
 }
 
