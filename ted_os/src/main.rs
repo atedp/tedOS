@@ -40,16 +40,27 @@ pub unsafe fn exit_qemu() {
     port.write(0);
 }
 
+#[cfg(not(feature = "integration-test"))]
 #[cfg(not(test))]
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
-
     println!("Hello World{}", "!");
+
+    // normal execution here
+
+    loop{}
+}
+
+#[cfg(feature = "integration-test")]
+#[cfg(not(test))]
+#[no_mangle]
+pub extern "C" fn _start() -> ! {
     serial_println!("Hello Host{}", "!");
+
+    run_test_1();
+    run_test_2();
 
     unsafe { exit_qemu(); }
 
     loop{}
 }
-
-

@@ -15,3 +15,6 @@ features = ["spin_no_std"]
 
 [dev-dependencies]
 array-init = "0"
+
+[features]
+integration-test = []
