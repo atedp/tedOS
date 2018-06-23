@@ -15,12 +15,14 @@ pub fn print(args: ::core::fmt::Arguments) {
 
 }
 
+#[macro_export]
 macro_rules! serial_print {
     ($($arg:tt)*) => {
         $crate::serial::print(format_args!($($arg)*));
     };
 }
 
+#[macro_export]
 macro_rules! serial_println {
     () => (serial_print!("\n"));
     ($fmt:expr) => (serial_print!(concat!($fmt, "\n")));
