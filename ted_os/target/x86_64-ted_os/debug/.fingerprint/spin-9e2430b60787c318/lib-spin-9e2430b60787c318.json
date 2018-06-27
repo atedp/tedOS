@@ -1,0 +1,1 @@
+{"rustc":13049598753933302534,"features":"[\"asm\", \"const_fn\", \"core_intrinsics\", \"default\", \"once\", \"unstable\"]","target":5854055808098174801,"profile":7990393541957723157,"path":10093204105248327308,"deps":[],"local":[{"Precalculated":"0.4.8"}],"rustflags":["--sysroot","/home/ted/Repos/tedOS/ted_os/target/sysroot"],"edition":"Edition2015"}

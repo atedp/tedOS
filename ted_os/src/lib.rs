@@ -1,5 +1,6 @@
 #![feature(const_fn)]
 #![no_std]
+#![feature(abi_x86_interrupt)]
 
 extern crate spin;
 extern crate volatile;
