@@ -24,3 +24,19 @@ pub unsafe fn exit_qemu() {
     let mut port = Port::<u32>::new(0xf4);
     port.write(0);
 }
+
+#[cfg(not(test))]
+#[cfg(no_mangle)]
+pub extern "C" fn _start() -> ! {
+    println!("Hello World{}", "!");
+
+    init_idt();
+
+    //trigger a page fault
+    unsafe {
+        *(0xdeadbeaf as *mut u64) = 42;
+    };
+
+    println!("It did not crash!");
+    loop{}
+}
