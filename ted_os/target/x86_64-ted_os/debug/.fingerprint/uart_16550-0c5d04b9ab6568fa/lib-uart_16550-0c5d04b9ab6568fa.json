@@ -1,1 +1,0 @@
-{"rustc":13049598753933302534,"features":"[]","target":6459471674451384202,"profile":7990393541957723157,"path":3018566313343746976,"deps":[["bitflags v1.0.3","bitflags",17911830794016740610],["x86_64 v0.2.6","x86_64",18085689152083978106]],"local":[{"Precalculated":"0.1.0"}],"rustflags":["--sysroot","/home/ted/Repos/tedOS/ted_os/target/sysroot"],"edition":"Edition2015"}
