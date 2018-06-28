@@ -28,14 +28,15 @@ pub unsafe fn exit_qemu() {
 #[cfg(not(test))]
 #[cfg(no_mangle)]
 pub extern "C" fn _start() -> ! {
-    println!("Hello World{}", "!");
+    println!("Hello World{}", "!!!");
 
     init_idt();
 
-    //trigger a page fault
-    unsafe {
-        *(0xdeadbeaf as *mut u64) = 42;
-    };
+    fn stack_overflow() {
+        stack_overflow();
+    }
+
+    stack_overflow();
 
     println!("It did not crash!");
     loop{}

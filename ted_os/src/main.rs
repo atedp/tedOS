@@ -18,6 +18,7 @@ lazy_static! {
     static ref IDT: Idt = {
         let mut idt = Idt::new();
         idt.breakpoint.set_handler_fn(breakpoint_handler);
+        idt.double_fault.set_handler_fn(double_fault_handler);
         idt
     };
 }
@@ -49,8 +50,11 @@ pub extern "C" fn _start() -> ! {
 
     init_idt();
 
-    //invoke a breakpoint exception 
-    x86_64::instructions::int3();
+    fn stack_overflow() {
+        stack_overflow();
+    }
+
+    stack_overflow();
 
     println!("It did not crash!{}", "");
     loop{}
