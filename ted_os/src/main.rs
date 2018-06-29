@@ -18,7 +18,11 @@ lazy_static! {
     static ref IDT: Idt = {
         let mut idt = Idt::new();
         idt.breakpoint.set_handler_fn(breakpoint_handler);
-        idt.double_fault.set_handler_fn(double_fault_handler);
+        unsafe {
+            idt.double_fault.set_handler_fn(double_fault_handler)
+                .set_stack_index(ted_os::gdt::DOUBLE_FAULT_IST_INDEX);
+        }
+        
         idt
     };
 }
@@ -48,6 +52,7 @@ use core::panic::PanicInfo;
 pub extern "C" fn _start() -> ! {
     println!("Hello World{}", "!");
 
+    ted_os::gdt::init();
     init_idt();
 
     fn stack_overflow() {

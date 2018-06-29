@@ -17,6 +17,7 @@ extern crate std;
 
 pub mod vga_buffer;
 pub mod serial;
+pub mod gdt;
 
 pub unsafe fn exit_qemu() {
     use x86_64::instructions::port::Port;
@@ -29,14 +30,6 @@ pub unsafe fn exit_qemu() {
 #[cfg(no_mangle)]
 pub extern "C" fn _start() -> ! {
     println!("Hello World{}", "!!!");
-
-    init_idt();
-
-    fn stack_overflow() {
-        stack_overflow();
-    }
-
-    stack_overflow();
 
     println!("It did not crash!");
     loop{}
